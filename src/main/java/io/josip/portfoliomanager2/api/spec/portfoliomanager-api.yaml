@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Portfolio Manager API
+  version: 1.0.0
+paths:
+  /portfolios:
+    get:
+      summary: List all portfolios for the current user
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: A list of portfolios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Portfolio'
+              examples:
+                portfolioListExample:
+                  value:
+                    - id: "123e4567-e89b-12d3-a456-426614174000"
+                      name: "My first portfolio"
+                      createdAt: "2023-01-01T00:00:00Z"
+                    - id: "123e4567-e89b-12d3-a456-426614174001"
+                      name: "My second portfolio"
+                      createdAt: "2023-01-02T00:00:00Z"
+  /portfolios/{portfolioId}/investments:
+    get:
+      summary: List all investments in a specific portfolio
+      parameters:
+        - name: portfolioId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A list of investments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Investment'
+              examples:
+                investmentListExample:
+                  value:
+                    - id: "789e4567-e89b-12d3-a456-426614174000"
+                      portfolioId: "123e4567-e89b-12d3-a456-426614174000"
+                      assetType: "Stock"
+                      assetName: "AAPL"
+                      quantity: 10
+                    - id: "789e4567-e89b-12d3-a456-426614174001"
+                      portfolioId: "123e4567-e89b-12d3-a456-426614174000"
+                      assetType: "Stock"
+                      assetName: "MSFT"
+                      quantity: 20
+components:
+  schemas:
+    Portfolio:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Investment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        portfolioId:
+          type: string
+          format: uuid
+        assetType:
+          type: string
+        assetName:
+          type: string
+        quantity:
+          type: number
+          format: float
