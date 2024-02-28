@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    hostname: db
+    container_name: postgre-db
+    environment:
+      - POSTGRES_DB=portfoliomanager
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+#    ADD VOLUME WHEN PERSISTENCE IS NEEDED
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#
+#volumes:
+#  pgdata:
+
