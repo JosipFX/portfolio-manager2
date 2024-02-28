@@ -25,10 +25,10 @@ Simple portfolio manager to keep best practices in one place.
 
 ## Roadmap
 
-- [ ] Setup
-- [ ] Simple model
-- [ ] Postgre DB with Docker
-- [ ] Flyway for migrations
+- [x] Setup
+- [x] Simple model
+- [x] Postgre DB with Docker
+- [x] Flyway for migrations
 - [ ] REST API to get portfolio data
   - [ ] Open api documentation
   - [ ] Open API generator
