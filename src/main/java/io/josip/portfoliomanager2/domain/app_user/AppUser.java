@@ -41,8 +41,8 @@ public class AppUser {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "insecure_password", nullable = false)
-    private String insecurePassword;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
