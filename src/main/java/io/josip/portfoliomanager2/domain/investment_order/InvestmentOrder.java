@@ -1,5 +1,6 @@
 package io.josip.portfoliomanager2.domain.investment_order;
 
+import static jakarta.persistence.EnumType.STRING;
 import static java.sql.Types.VARCHAR;
 
 import java.math.BigDecimal;
@@ -8,6 +9,7 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -46,8 +48,9 @@ public class InvestmentOrder {
     @Column(name = "price_per_share", nullable = false)
     private BigDecimal pricePerShare;
 
+    @Enumerated(STRING)
     @Column(name = "side", nullable = false, length = 32)
-    private String side;
+    private InvestmentOrderSide side;
 
     @Column(name = "executed_at")
     private ZonedDateTime executedAt;

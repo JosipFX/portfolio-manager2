@@ -14,6 +14,7 @@ import io.josip.portfoliomanager2.domain.investment.Investment;
 import io.josip.portfoliomanager2.domain.investment.InvestmentRepository;
 import io.josip.portfoliomanager2.domain.investment_order.InvestmentOrder;
 import io.josip.portfoliomanager2.domain.investment_order.InvestmentOrderRepository;
+import io.josip.portfoliomanager2.domain.investment_order.InvestmentOrderSide;
 import io.josip.portfoliomanager2.domain.portfolio.Portfolio;
 import io.josip.portfoliomanager2.domain.portfolio.PortfolioRepository;
 
@@ -86,7 +87,7 @@ public class SampleDataCreatorService {
         InvestmentOrder order1 = InvestmentOrder.builder()
             .investment(investment1)
             .pricePerShare(new BigDecimal("150"))
-            .side("BUY")
+            .side(InvestmentOrderSide.BUY)
             .executedAt(ZonedDateTime.now())
             .quantity(BigDecimal.valueOf(10))
             .build();
@@ -103,7 +104,7 @@ public class SampleDataCreatorService {
         InvestmentOrder order2 = InvestmentOrder.builder()
             .investment(investment2)
             .pricePerShare(new BigDecimal("200"))
-            .side("BUY")
+            .side(InvestmentOrderSide.BUY)
             .executedAt(ZonedDateTime.now())
             .quantity(BigDecimal.valueOf(20))
             .build();
